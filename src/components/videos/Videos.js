@@ -7,7 +7,15 @@ export default function Videos() {
    const { data: videos, isLoading, isError, error } = useGetVideosQuery();
 
    let content;
-   if (isLoading) content = <Loading />;
+   if (isLoading)
+      content = (
+         <>
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+         </>
+      );
    if (!isLoading && isError) content = <Error message={'Something went wrong'} />;
    if (!isLoading && !isError && videos.length === 0) content = <Error message={'no video found'} />;
    if (!isLoading && !isError && videos.length > 0)
